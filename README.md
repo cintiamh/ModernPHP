@@ -1,5 +1,6 @@
 1. [Language Features](#language-features)
-a. [The new PHP](#the-new-php)
+  * [The new PHP](#the-new-php)
+  * [Features](#features)
 2. [Good Practices](#good-practices)
 3. [Deployment, Testing, and Tuning](#deployment-testing-and-tuning)
 

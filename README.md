@@ -132,6 +132,51 @@ class MyClass {
 
 ### Generators
 
+Generators are simple iterators.
+
+Generators compute and yield iteration values on-demand.
+
+You can iterate in only one direction (forward) with generators.
+
+```php
+function simpleGenerator() {
+  yield 'value1';
+  yield 'value2';
+  yield 'value3';
+}
+
+foreach (myGenerator() as $yieldedValue) {
+  echo $yieldedValue . PHP_EOL;
+}
+```
+
+CSV generator example:
+
+```php
+function getRows($file) {
+  $handle = fopen($file, 'rb');
+  if (!$handle) {
+    throw new Exception();
+  }
+  while(!feof($handle)) {
+    yield fgetcsv($handle);
+  }
+  fclose($handle);
+}
+
+foreach(getRows('data.csv') as $row) {
+  print_r($row);
+}
+```
+
+This example allocates memory for only one CSV row at a time instead of reading the entire 4 GB CSV file into memory.
+
+Generators are most useful for iterating large or numerically sequenced data sets with only a tiny amount of system memory.
+
+If you require more versatility, use a prebuilt Iterator: https://www.php.net/manual/en/spl.iterators.php
+
+### Closures
+
 # Good Practices
 
 ## Standards

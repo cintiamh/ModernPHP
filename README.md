@@ -95,6 +95,43 @@ Interface => we don't care *how* the code implements the interface, but just mak
 
 If I write code that expects an interface, my code immediately knows how to use any object that implements that interface.
 
+```php
+interface Documentable {
+  public function getId();
+  public function getContent();
+}
+
+class HtmlDocument implements Documentable {
+  ...
+  public function __construct() { ... }
+  public function getId() { ... }
+  public function getContent() { ... }
+}
+```
+
+### Traits
+
+Trait is a partial class implementation that can be mixed into one or more existing PHP classes.
+
+* say what a class can do (like an interface)
+* provide a modular implementation (like a class)
+
+Traits enable modular implementations that can be injected into otherwise unrelated classes. => code reuse.
+
+```php
+trait MyTrait {
+  // trait implementation (looks like a class with no constructor)
+}
+
+class MyClass {
+  use MyTrait;
+
+  // Class implementation
+}
+```
+
+### Generators
+
 # Good Practices
 
 ## Standards

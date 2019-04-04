@@ -204,6 +204,22 @@ print_r($numbersPlusOne);
 
 You must manually attach state to a PHP closure with the closure object's `bindTo()` method or the `use` keyword.
 
+```php
+function enclosePerson($name) {
+  return function ($doCommand) use ($name) {
+    return sprintf('%s, %s', $name, $doCommand);
+  };
+}
+
+// Enclose "Clay" string into closure
+$clay = enclosePerson('Clay');
+
+// Invoke closure with command 
+echo $clay('get me sweet tea!');
+```
+
+PHP closures are objects. Each closure instance has its own internal state that is accessible with the `$this` keyword.
+
 # Good Practices
 
 ## Standards

@@ -177,6 +177,33 @@ If you require more versatility, use a prebuilt Iterator: https://www.php.net/ma
 
 ### Closures
 
+Closure => a function that encapsulates its surroundings state at the time it is created. The encapsulated state exists inside the closure even when the closure lives after its original environment ceases to exist.
+
+Anonymous function => a function without a name. Useful as function or method callbacks.
+
+If you inspect a PHP closure or anonymous function, they are instances of the `Closure` class.
+
+```php
+$closure = function ($name) {
+  return sprintf('Hello %s', $name);
+};
+
+echo $closure("Josh");
+```
+
+Closures can be passed into other PHP functions as arguments.
+
+```php
+$numbersPlusOne = array_map(function ($number) {
+  return $number + 1;
+}, [1,2,3]);
+print_r($numbersPlusOne);
+```
+
+#### Attach State
+
+You must manually attach state to a PHP closure with the closure object's `bindTo()` method or the `use` keyword.
+
 # Good Practices
 
 ## Standards

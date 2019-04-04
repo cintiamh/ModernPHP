@@ -84,6 +84,10 @@ Tips:
 
 ### Code to an interface
 
+Interface => we don't care *how* the code implements the interface, but just makes sure it's implemented following a contract.
+
+If I write code that expects an interface, my code immediately knows how to use any object that implements that interface.
+
 # Good Practices
 
 ## Standards

@@ -316,6 +316,23 @@ if (php_sapi_name() === 'cli-server') {
 
 ## Standards
 
+* Macro frameworks:
+  * Symfony
+  * Laravel
+* Micro frameworks
+  * Silex
+  * Slim
+
+### PHP-FIG to the Rescue
+
+PHP Framework Interop Group => creates recommendations that PHP frameworks can implement to improve communication and sharing with other frameworks.
+
+### Framework Interoperability
+
+Goal => Interoperability => working together via interfaces, autoloading, and style.
+
+#### Interfaces
+
 ## Components
 
 ## Good Practices

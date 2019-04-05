@@ -362,6 +362,20 @@ The PSR-2 requires PSR-1 code style.
   * end files with a single blank line, not include a trailing `?>` PHP tag.
   * each line not exceed 80 characters. (must not exceed 120 chars)
   * each line must not have trailing white space.
+* Keywords: type all keywords in lowercase.
+* Namespaces: 
+  * each namespace declaration must be followed by one blank line.
+  * when you import use `use` keyword, follow the block of `use` declaration with one blank line.
+* Classes:
+  * class definition's opening bracket must reside on a new line immediately after the class definition name.
+  * the closing bracket must reside on a new line after the end of the class definition body.
+  * the `extends` and `implements` keywords must appear on the same line as the class name.
+* Methods:
+  * same brackets rules as classes.
+  * the first parenthesis does not have a trailing space, and the last parenthesis does not have a preceding space.
+  * Each method argument (except the last) is followed immediately by a comma and one space character.
+* Visibility: `public`, `protected`, or `private`.
+* Control structures: 
 
 ## Components
 

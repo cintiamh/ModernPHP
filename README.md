@@ -220,6 +220,98 @@ echo $clay('get me sweet tea!');
 
 PHP closures are objects. Each closure instance has its own internal state that is accessible with the `$this` keyword.
 
+Attaching closure state with the `bindTo` method:
+```php
+class App {
+  protected $routes = [];
+  protected $responseStatus = '200 OK';
+  protected $responseContentType = 'text/html';
+  protected $responseBody = 'Hello World';
+  
+  public function addRoute($routePath, $routeCallback) {
+    $this->routes[$routePath] = $routeCallback->bindTo($this, __CLASS__);
+  }
+  
+  public function dispatch($currentPath) {
+    foreach ($this->routes as $routePath => $callback) {
+      if ($routePath === $currentPath) {
+        $callback();
+      }
+    }
+    
+    header('HTTP/1.1 ' . $this->responseStatus);
+    header('Content-type: ' . $this->responseContentType);
+    header('Content-length: ' . mb_strlen($this->responseBody));
+    echo $this->responseBody;
+  }
+}
+
+$app = new App();
+$app->addRoute('/users/josh', function() {
+  $this->responseContentType = 'application/json;charset=utf8';
+  $this->responseBody = '{"name": "Josh"}';
+});
+$app->dispatch('/users/josh');
+```
+
+### Zend OPcache
+
+Bytecode cache.
+
+Needs activation:
+```
+--enable-opcache
+```
+
+### Built-in HTTP server
+
+Simple HTTP server for dev.
+
+#### Start the server
+
+Navigate to your project's root.
+```
+$ php -S localhost:4000
+```
+
+Let other machines in the network to access your dev:
+```
+$ php -S 0.0.0.0:4000
+```
+
+#### Configure the Server
+
+```
+$ php -S localhost:8000 -c app/config/php.ini
+```
+
+#### Router Scripts
+
+The built-in server doesn't support .htaccess files.
+
+The router script == hardcoded .htaccess file.
+
+```
+$ php -S localhost:8000 router.php
+```
+
+#### Detect the built-in server
+
+```php
+if (php_sapi_name() === 'cli-server') {
+  // PHP web server
+} else {
+  // Other web server
+}
+```
+
+#### Drawbacks
+
+* handles one request at a time.
+* Each HTTP request is blocking.
+* supports a limited number of mimetypes.
+* has limited URL rewriting with router scripts.
+
 # Good Practices
 
 ## Standards

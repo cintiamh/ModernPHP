@@ -331,7 +331,37 @@ PHP Framework Interop Group => creates recommendations that PHP frameworks can i
 
 Goal => Interoperability => working together via interfaces, autoloading, and style.
 
-#### Interfaces
+* Interface: PHP frameworks work together via shared interfaces.
+* Autoloading: a PHP class is automatically located and loaded on-demand by the PHP interpreter during runtime.
+* Style: If all frameworks use the same style => less friction to get started.
+
+### What is a PSR?
+
+PHP standards recommendation.
+
+PHP-FIG recommendations.
+
+Each PHP-FIG recommendation solves a specific problem that is frequently encountered by most PHP frameworks.
+
+### PSR-1: Basic Code Style
+
+* PHP tags: use either `<?php ?>` or `<?= ?>` tags.
+* Encoding: UTF-8.
+* Objective: single file either define symbols or perform an action that has side effects, never both.
+* Autoloading: support PSR-4.
+* Class names: `CamelCase` / `TitleCase`
+* Constant names: UPPERCASE characters with underscores.
+* Method names: `camelCase`
+
+### PSR-2: Strict Code Style
+
+The PSR-2 requires PSR-1 code style.
+
+* Indentation: Indent code with several space characters (4 spaces).
+* Files and lines: 
+  * end files with a single blank line, not include a trailing `?>` PHP tag.
+  * each line not exceed 80 characters. (must not exceed 120 chars)
+  * each line must not have trailing white space.
 
 ## Components
 

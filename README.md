@@ -1,8 +1,15 @@
+Docker:
 ```
 $ docker build .
 $ docker run -p 0.0.0.0:8080:80 6da5ae3dbc78
 $ docker ps
 $ docker stop 6da5ae3dbc78
+```
+
+Built in server:
+Navigate to your project's root.
+```
+$ php -S localhost:4000
 ```
 
 1. [Language Features](#language-features)
@@ -378,6 +385,76 @@ The PSR-2 requires PSR-1 code style.
 * Control structures: 
 
 ## Components
+
+Monolith ====> specialized and interoperable components.
+
+Component definition: collection of related classes, interfaces, and traits that solve a single problem. A component's classes, interfaces, and traits usually live beneath a common namespace.
+
+How to spot good PHP components:
+* laser-focused
+* small
+* cooperative - lives beneath its own namespace
+* well-tested
+* well-documented
+
+Symfony is a framework but also has Symfony components.
+
+### Find Components
+
+* Packagist: de facto PHP component directory.
+* Awesome PHP: list of good PHP components (Jamie York)
+
+### Use PHP Components
+
+* Composer: dependency manager for PHP components.
+
+Composer abstracts away dependency management and autoloading.
+
+#### How to install Composer
+
+```
+$ curl -sS https://getcomposer.org/installer | php
+```
+
+This command downloads the Composer installer script with `curl`, executes the installer script with `php`, and creates a `composer.phar` file in the current working directory. The `composer.phar` file is the Composer binary.
+
+[optional] move and rename the downloaded Composer binary:
+
+```
+$ sudo mv composer.phar /usr/local/bin/composer
+$ sudo chmod +x /usr/local/bin/composer
+```
+
+Append this to the end of `~/.bash_profile`
+```
+PATH=/usr/local/bin:$PATH
+```
+
+Install a new component (on stable version):
+```
+$ composer require vendor/package
+```
+
+Composer download the components into a new `vendor/` directory. It also creates a `composer.json` file and a `composer.lock` file.
+
+```
+$ composer update
+```
+
+The update command updates your components to their latest stable versions and also updates the composer.lock file.
+
+#### Autoloading PHP components
+
+```
+require 'vendor/autoload.php';
+```
+
+Include the autoload in the top of your file. Now you are able to use the vendor components.
+
+* You can also use Composer with private repositories.
+
+### Create PHP Components
+
 
 ## Good Practices
 

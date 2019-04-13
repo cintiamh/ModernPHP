@@ -455,7 +455,36 @@ Include the autoload in the top of your file. Now you are able to use the vendor
 
 ### Create PHP Components
 
+#### Vendor and package names
+
+* PHP components uses globally unique vendor and package name combination.
+* It's recommended to use only lowercase letters.
+* Many components can live beneath a single vendor name.
+
+#### Namespaces
+
+* The component's PHP namespace is unrelated to the component's vendor and package names.
+
+#### Filesystem organization
+
+* `src/` - component's source code 
+* `tests/` - components's tests
+* `composer.json` - Composer configuration file
+* `README.md` - helpful information about the component (name, description, author, usage, contributor guidelines, software license, and credits)
+* `CONTRIBUTING.md` - describes how others can contribute
+* `LICENSE` - component's software license.
+* `CHANGELOG.md` - lists changes introduced in each new version.
 
 ## Good Practices
+
+### Sanitize, Validate, and Escape
+
+#### Sanitize Input
+
+* Sanitize => escape and/or remove unsafe characters.
+* it's important to sanitize input data *before* it reaches your application's storage layer.
+* Most common: HTML, SQL, queries, and user profile information.
+
+
 
 # Deployment, Testing, and Tuning
